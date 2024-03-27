@@ -133,7 +133,7 @@ def generate_transcript(audio_filename,args):
     result=subprocess.run(["insanely-fast-whisper","--file-name",audio_filename,
                            "--transcript-path",transcript_name,
                            "--language",args.language,
-                           "--model-name",args.model_name
+                           "--model-name",args.model_name,
                            "--task",args.task
                            ])
     print("STDOUT:", result.stdout)
