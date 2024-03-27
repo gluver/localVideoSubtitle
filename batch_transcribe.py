@@ -134,6 +134,7 @@ def generate_transcript(audio_filename,args):
                            "--transcript-path",transcript_name,
                            "--language",args.language,
                            "--model-name",args.model_name
+                           "--task",args.task
                            ])
     print("STDOUT:", result.stdout)
     print("STDERR:", result.stderr)
@@ -241,7 +242,6 @@ def from_video(args):
         # extract_audio(video_file,args.transcript_path)
                 
 def from_audio(args):
-    # extract audio
     for dirpath,dirnames,filenames in os.walk(args.input_path):
         audio_extensions = ('.mp3', '.wav')
         for filename in filenames:
