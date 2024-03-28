@@ -129,13 +129,15 @@ def extract_audio(filename,audio_output_path):
 def generate_transcript(audio_filename,args):
     filename_base= os.path.splitext(os.path.split(audio_filename)[-1])[0]
     os.makedirs(args.transcript_path,exist_ok="Ture")
-    transcript_name=os.path.join(args.transcript_path,filename_base+".json")
+    transcript_name=os.path.join(args.transcript_path,f"{filename_base}_{args.language}.json")
     result=subprocess.run(["insanely-fast-whisper","--file-name",audio_filename,
                            "--transcript-path",transcript_name,
                            "--language",args.language,
                            "--model-name",args.model_name,
                            "--task",args.task,
                            "--timestamp",args.timestamp,
+                           "--batch-size",f"{args.batch_size}",
+                           "--device-id",args.device_id,
                            ])
     print("STDOUT:", result.stdout)
     print("STDERR:", result.stderr)
