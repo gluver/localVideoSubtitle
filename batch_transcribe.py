@@ -23,7 +23,7 @@ parser.add_argument(
 parser.add_argument(
     "--output-path",
     required=False,
-    default=".\output\\temp",
+    default=f".{os.sep}output{os.sep}temp",
     type=str,
     help="Path to save the audio extract output. (default: current work directory)",
 )
@@ -31,7 +31,7 @@ parser.add_argument(
 parser.add_argument(
     "--transcript-path",
     required=False,
-    default=".\output\\transcript",
+    default=f".{os.sep}output{os.sep}transcript",
     type=str,
     help="Path to save the transcription output. (default: current work directory)",
 )
@@ -40,7 +40,7 @@ parser.add_argument(
 parser.add_argument(
     "--subtitle-path",
     required=False,
-    default=".\output\subtitle",
+    default=f".{os.sep}output{os.sep}subtitle",
     type=str,
     help="Path to save the transcription output. (default: current work directory)",
 )
@@ -134,7 +134,8 @@ def generate_transcript(audio_filename,args):
                            "--transcript-path",transcript_name,
                            "--language",args.language,
                            "--model-name",args.model_name,
-                           "--task",args.task
+                           "--task",args.task,
+                           "--timestamp",args.timestamp,
                            ])
     print("STDOUT:", result.stdout)
     print("STDERR:", result.stderr)
